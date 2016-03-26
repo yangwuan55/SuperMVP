@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="tag_item_type"></item>
+    <item type="id" name="tag_view_holder"></item>
+    <item type="id" name="tag_g_view"></item>
+</resources>
