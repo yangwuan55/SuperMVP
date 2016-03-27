@@ -1,9 +1,13 @@
 package com.ymr.supermvp.android;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 /**
  * Created by ymr on 16/3/26.
@@ -12,22 +16,19 @@ public abstract class BaseFragment<P extends IAndroidPresenter> extends Fragment
 
     private final ViewDelegate<P> mViewDelegate = new ViewDelegate<>(this);
 
+    @Nullable
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mViewDelegate.onCreate(savedInstanceState);
+        return onCreateChildView(inflater,container,savedInstanceState);
     }
+
+    protected abstract View onCreateChildView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
 
     @Override
     public void onStop() {
         super.onStop();
         mViewDelegate.onStop();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        mViewDelegate.onDestroy();
     }
 
     @Override
@@ -58,4 +59,11 @@ public abstract class BaseFragment<P extends IAndroidPresenter> extends Fragment
     public P getPresenter() {
         return mViewDelegate.getPresenter();
     }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mViewDelegate.onDestroy();
+    }
+
 }
