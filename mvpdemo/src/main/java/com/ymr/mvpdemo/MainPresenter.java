@@ -21,6 +21,10 @@ public class MainPresenter extends DatabindingPresenter<MainView> {
 
     private Handler mHandler = new Handler();
 
+    public MainPresenter(MainView view) {
+        super(view);
+    }
+
     @Override
     public void finishCreateView() {
         getView().showLoading();

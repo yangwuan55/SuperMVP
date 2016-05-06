@@ -1,9 +1,9 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.android.databinding'
-
+apply plugin: 'com.neenbedankt.android-apt'
 android {
     compileSdkVersion 23
-    buildToolsVersion "24.0.0 rc1"
+    buildToolsVersion "22.0.1"
 
     defaultConfig {
         minSdkVersion 14
@@ -17,10 +17,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    dexOptions {
+        preDexLibraries = false
+        javaMaxHeapSize "4g"
+    }
+    lintOptions {
+        abortOnError false
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
+    apt 'com.android.databinding:compiler:1.0-rc1'
     compile 'com.android.support:appcompat-v7:23.2.1'
 }

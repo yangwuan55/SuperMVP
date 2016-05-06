@@ -31,7 +31,7 @@ public abstract class DataBindingFragment<P extends DatabindingPresenter> extend
         if (parent != null) {
             parent.removeView(mViewDataBinding.getRoot());
         }
-        finishCreateDataBinding(mViewDataBinding,getPresenter());
+        finishCreateDataBinding(mViewDataBinding);
         getPresenter().finishCreateView();
         return mViewDataBinding.getRoot();
     }

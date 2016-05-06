@@ -15,7 +15,7 @@ public class MainActivity extends DataBindingActivity<MainPresenter> implements 
     private ProgressDialog mProgressDialog;
 
     @Override
-    public void finishCreateDataBinding(ViewDataBinding viewDataBinding, MainPresenter presenter) {
+    public void finishCreateDataBinding(ViewDataBinding viewDataBinding) {
         mProgressDialog = new ProgressDialog(this);
         mViewDataBinding = ((ActivityMainBinding) viewDataBinding);
         mViewDataBinding.list.setAdapter(getPresenter().getAdapter());
@@ -34,7 +34,7 @@ public class MainActivity extends DataBindingActivity<MainPresenter> implements 
 
     @Override
     public MainPresenter createPresenter(Context context) {
-        return new MainPresenter();
+        return new MainPresenter(this);
     }
 
     @Override

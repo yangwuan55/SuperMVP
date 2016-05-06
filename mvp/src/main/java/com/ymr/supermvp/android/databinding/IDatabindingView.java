@@ -9,7 +9,7 @@ import com.ymr.supermvp.android.IAndroidView;
  */
 public interface IDatabindingView<P extends DatabindingPresenter> extends IAndroidView<P> {
 
-    void finishCreateDataBinding(ViewDataBinding viewDataBinding, P presenter);
+    void finishCreateDataBinding(ViewDataBinding viewDataBinding);
 
     int getContentLayout();
 }

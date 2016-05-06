@@ -11,6 +11,10 @@ import com.ymr.supermvp.common.BasePresenter;
  */
 public abstract class BaseAndroidPresenter<V extends IAndroidView> extends BasePresenter<V> implements IAndroidPresenter<V> {
 
+    public BaseAndroidPresenter(V view) {
+        attachView(view);
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
 
