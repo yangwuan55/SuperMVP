@@ -10,11 +10,16 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    lintOptions {
+        abortOnError false
     }
 }
 
@@ -23,6 +28,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     provided 'com.mcxiaoke.volley:library:1.0.19'
     provided 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
-    compile 'com.google.code.gson:gson:+'
+    compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.android.support:appcompat-v7:23.3.0'
 }
