@@ -1,5 +1,6 @@
 package com.ymr.supermvp.android;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -71,5 +72,25 @@ public abstract class BaseActivity<P extends IAndroidPresenter> extends AppCompa
     @Override
     public P getPresenter() {
         return mViewDelegate.getPresenter();
+    }
+
+    @Override
+    public void gotoActivity(Class<? extends Activity> activityClass) {
+        gotoActivity(new Intent(this,activityClass));
+    }
+
+    @Override
+    public void gotoActivity(Class<? extends Activity> activityClass, int requestCode) {
+        gotoActivity(new Intent(this,activityClass),requestCode);
+    }
+
+    @Override
+    public void gotoActivity(Intent intent) {
+        startActivity(intent);
+    }
+
+    @Override
+    public void gotoActivity(Intent intent, int requestCode) {
+        startActivityForResult(intent,requestCode);
     }
 }

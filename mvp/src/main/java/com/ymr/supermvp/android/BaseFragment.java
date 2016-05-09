@@ -1,5 +1,6 @@
 package com.ymr.supermvp.android;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -66,4 +67,23 @@ public abstract class BaseFragment<P extends IAndroidPresenter> extends Fragment
         mViewDelegate.onDestroy();
     }
 
+    @Override
+    public void gotoActivity(Class<? extends Activity> activityClass) {
+        gotoActivity(new Intent(getActivity(),activityClass));
+    }
+
+    @Override
+    public void gotoActivity(Class<? extends Activity> activityClass, int requestCode) {
+        gotoActivity(new Intent(getActivity(),activityClass),requestCode);
+    }
+
+    @Override
+    public void gotoActivity(Intent intent) {
+        startActivity(intent);
+    }
+
+    @Override
+    public void gotoActivity(Intent intent, int requestCode) {
+        startActivityForResult(intent,requestCode);
+    }
 }
