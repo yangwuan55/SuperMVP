@@ -33,7 +33,7 @@ public class MainActivity extends DataBindingActivity<MainPresenter> implements 
     }
 
     @Override
-    public MainPresenter createPresenter(Context context) {
+    public MainPresenter createPresenter() {
         return new MainPresenter(this);
     }
 

@@ -11,7 +11,7 @@ import com.ymr.supermvp.common.IView;
  */
 public interface IAndroidView<P extends IAndroidPresenter> extends IView<P> {
     void finishCreatePresenter();
-    P createPresenter(Context context);
+    P createPresenter();
     Context getContext();
     void gotoActivity(Class<? extends Activity> activityClass);
     void gotoActivity(Class<? extends Activity> activityClass,int requestCode);
