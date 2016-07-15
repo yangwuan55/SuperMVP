@@ -27,7 +27,7 @@ public class Env {
     private static Init sInit;
 
     public static boolean isDebug() {
-        return false;
+        return sInit.isDebug();
     }
 
     public static Class<? extends IApiBase> getApiBase() {

@@ -152,6 +152,10 @@ public class NetResultDisposer {
             }
         }
         netError.setNetRequestParams(params);
+        if (error.networkResponse != null) {
+            netError.setErrorCode(error.networkResponse.statusCode);
+            netError.setMsg(new String(error.networkResponse.data));
+        }
         return netError;
     }
 

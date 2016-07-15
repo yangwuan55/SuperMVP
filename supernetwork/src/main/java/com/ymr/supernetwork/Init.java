@@ -17,4 +17,6 @@ public interface Init {
     CommonParamsGetter getCommonParamsGetter();
 
     Class<? extends IApiBase> getApibaseClass();
+
+    boolean isDebug();
 }

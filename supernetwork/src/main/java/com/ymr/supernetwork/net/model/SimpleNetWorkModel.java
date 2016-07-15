@@ -39,7 +39,6 @@ public class SimpleNetWorkModel<T> extends SimpleModel implements NetWorkModel<T
                 @Override
                 public void onError(Error error) {
                     listener.onError(error);
-                    //CrashReport.postCatchedException(new Throwable("服务器错误：" + error));
                 }
             }, mTClass,params.getHeaders(),params.getCookies(),forceFromServer);
         } else {

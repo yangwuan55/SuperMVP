@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.android.volley.Request;
 import com.ymr.supernetwork.Env;
+import com.ymr.supernetwork.net.util.LOGGER;
 import com.ymr.supernetwork.net.util.NetUtil;
 
 import java.io.Serializable;
@@ -14,6 +15,7 @@ import java.util.Map;
  * Created by ymr on 15/6/18.
  */
 public abstract class SimpleNetParams implements NetRequestParams, Serializable {
+    private static final String TAG = "SimpleNetParams";
     private String tailUrl;
     private Map<String, String> mChildGETParams;
     private String mUrl;
@@ -44,7 +46,9 @@ public abstract class SimpleNetParams implements NetRequestParams, Serializable 
 
     @Override
     public String getUrl() {
+        LOGGER.i(TAG,"getUrl");
         if (!getedUrl) {
+            LOGGER.i(TAG,"getedUrl = false");
             getedUrl = true;
             mUrl = getRealUrl();
         }
@@ -65,7 +69,9 @@ public abstract class SimpleNetParams implements NetRequestParams, Serializable 
 
         String url = null;
         if (domainUrl != null) {
-            if (Env.isDebug()) {
+            boolean debug = Env.isDebug();
+            LOGGER.i(TAG,"debug="+debug);
+            if (debug) {
                 url = domainUrl.getDebugUrl();
             } else {
                 url = domainUrl.getReleaseUrl();
