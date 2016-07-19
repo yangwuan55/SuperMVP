@@ -1,4 +1,4 @@
-package com.ymr.common.adapter;
+package com.ymr.common.adapter.databinding;
 
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;

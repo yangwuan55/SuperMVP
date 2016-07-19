@@ -1,8 +1,11 @@
-package com.ymr.common.adapter;
+package com.ymr.common.adapter.databinding;
 
 import android.content.Context;
 import android.databinding.ViewDataBinding;
 import android.view.View;
+
+import com.ymr.common.adapter.HolderRecyclerAdapter;
+import com.ymr.common.adapter.IViewHolder;
 
 /**
  * Created by ymr on 16/3/26.

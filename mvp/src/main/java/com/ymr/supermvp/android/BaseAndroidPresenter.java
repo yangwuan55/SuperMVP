@@ -1,5 +1,6 @@
 package com.ymr.supermvp.android;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -58,5 +59,12 @@ public abstract class BaseAndroidPresenter<V extends IAndroidView> extends BaseP
     @Override
     protected void onDetachView() {
 
+    }
+
+    public Context getContext() {
+        if (getView() != null) {
+            return getView().getContext();
+        }
+        return null;
     }
 }

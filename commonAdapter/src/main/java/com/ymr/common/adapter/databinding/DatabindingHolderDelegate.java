@@ -1,10 +1,12 @@
-package com.ymr.common.adapter;
+package com.ymr.common.adapter.databinding;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.view.LayoutInflater;
 import android.view.View;
+
+import com.ymr.common.adapter.IViewHolder;
 
 public class DatabindingHolderDelegate<D> {
 

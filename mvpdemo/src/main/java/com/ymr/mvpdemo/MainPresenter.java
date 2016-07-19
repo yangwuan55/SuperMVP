@@ -5,7 +5,7 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.widget.ListAdapter;
 
-import com.ymr.common.adapter.DataBindingAdapter;
+import com.ymr.common.adapter.databinding.DataBindingAdapter;
 import com.ymr.common.adapter.IViewHolder;
 import com.ymr.mvpdemo.databinding.LayoutListItemBinding;
 import com.ymr.supermvp.android.databinding.DatabindingPresenter;
