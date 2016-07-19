@@ -17,4 +17,5 @@ public interface IAndroidView<P extends IAndroidPresenter> extends IView<P> {
     void gotoActivity(Class<? extends Activity> activityClass,int requestCode);
     void gotoActivity(Intent intent);
     void gotoActivity(Intent intent,int requestCode);
+    Intent getIntent();
 }

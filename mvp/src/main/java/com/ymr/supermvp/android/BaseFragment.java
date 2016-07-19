@@ -86,4 +86,9 @@ public abstract class BaseFragment<P extends IAndroidPresenter> extends Fragment
     public void gotoActivity(Intent intent, int requestCode) {
         startActivityForResult(intent,requestCode);
     }
+
+    @Override
+    public Intent getIntent() {
+        return getActivity().getIntent();
+    }
 }

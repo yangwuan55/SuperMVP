@@ -67,4 +67,11 @@ public abstract class BaseAndroidPresenter<V extends IAndroidView> extends BaseP
         }
         return null;
     }
+
+    public Intent getIntent() {
+        if (getView() != null) {
+            return getView().getIntent();
+        }
+        return null;
+    }
 }
