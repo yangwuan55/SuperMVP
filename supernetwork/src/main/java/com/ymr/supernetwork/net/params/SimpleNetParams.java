@@ -46,9 +46,7 @@ public abstract class SimpleNetParams implements NetRequestParams, Serializable 
 
     @Override
     public String getUrl() {
-        LOGGER.i(TAG,"getUrl");
         if (!getedUrl) {
-            LOGGER.i(TAG,"getedUrl = false");
             getedUrl = true;
             mUrl = getRealUrl();
         }
@@ -69,9 +67,7 @@ public abstract class SimpleNetParams implements NetRequestParams, Serializable 
 
         String url = null;
         if (domainUrl != null) {
-            boolean debug = Env.isDebug();
-            LOGGER.i(TAG,"debug="+debug);
-            if (debug) {
+            if (Env.isDebug()) {
                 url = domainUrl.getDebugUrl();
             } else {
                 url = domainUrl.getReleaseUrl();

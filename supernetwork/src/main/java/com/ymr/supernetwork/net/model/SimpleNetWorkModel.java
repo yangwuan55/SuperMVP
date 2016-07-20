@@ -13,6 +13,7 @@ public class SimpleNetWorkModel<T> extends SimpleModel implements NetWorkModel<T
 
     private final Context mContext;
     private final Class<T> mTClass;
+    private boolean isCancel;
 
     public SimpleNetWorkModel(Context context, Class<T> tClass) {
         mContext = context;
@@ -26,6 +27,7 @@ public class SimpleNetWorkModel<T> extends SimpleModel implements NetWorkModel<T
 
     @Override
     public void updateDatas(NetRequestParams params, final UpdateListener<T> listener, boolean forceFromServer) {
+        isCancel = false;
         if (DeviceInfoUtils.hasInternet(mContext)) {
             if (listener == null) {
                 throw new RuntimeException("回调不可为空");
@@ -33,12 +35,16 @@ public class SimpleNetWorkModel<T> extends SimpleModel implements NetWorkModel<T
             NetResultDisposer.dispose(mContext, params, new UpdateListener<T>() {
                 @Override
                 public void finishUpdate(T result) {
-                    listener.finishUpdate(result);
+                    if (!isCancel) {
+                        listener.finishUpdate(result);
+                    }
                 }
 
                 @Override
                 public void onError(Error error) {
-                    listener.onError(error);
+                    if (!isCancel) {
+                        listener.onError(error);
+                    }
                 }
             }, mTClass,params.getHeaders(),params.getCookies(),forceFromServer);
         } else {
@@ -46,11 +52,17 @@ public class SimpleNetWorkModel<T> extends SimpleModel implements NetWorkModel<T
             error.setErrorCode(10000);
             error.setMsg("无网络");
             error.setNetRequestParams(params);
-            listener.onError(error);
+            if (!isCancel) {
+                listener.onError(error);
+            }
         }
     }
 
     public Context getContext() {
         return mContext;
+    }
+
+    public void cancel() {
+        isCancel = true;
     }
 }
