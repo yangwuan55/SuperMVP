@@ -1,11 +1,8 @@
 package com.ymr.supernetwork.net.volley;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.view.View;
-import android.widget.ImageView;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -13,12 +10,8 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
-import com.ymr.supernetwork.net.bean.IApiBase;
 import com.ymr.supernetwork.net.INetWork;
+import com.ymr.supernetwork.net.bean.IApiBase;
 import com.ymr.supernetwork.net.params.FileParams;
 import com.ymr.supernetwork.net.params.NetRequestParams;
 
@@ -35,16 +28,10 @@ public class VolleyUtil implements INetWork {
     private static VolleyUtil sInstance;
     private final Context mContext;
     private final RequestQueue mRequestQueue;
-    private ImageLoader mImageLoader;
 
-    public interface ImageLoadSuccessLisener{
-        void onLoadSuccess(Bitmap bitmap);
-        void onFail();
-    }
     private VolleyUtil(Context context) {
         mContext = context;
         mRequestQueue = Volley.newRequestQueue(mContext, new MultiPartStack());
-        mImageLoader = com.nostra13.universalimageloader.core.ImageLoader.getInstance();
     }
 
     public static VolleyUtil getInstance(Context context) {
@@ -62,50 +49,6 @@ public class VolleyUtil implements INetWork {
         request.setTag(DEFAULT_TAG);
         request.setRetryPolicy(new DefaultRetryPolicy(20 * 1000, 1, 1.0f));
         mRequestQueue.add(request);
-    }
-
-    public void loadImage(String url, ImageView view, int defultRes, int errorRes) {
-        mImageLoader.displayImage(url, view, new DisplayImageOptions.Builder()
-                .showImageOnLoading(defultRes)
-                .showImageOnFail(errorRes)
-                .cacheInMemory(true)
-                .cacheOnDisk(true)
-                .considerExifParams(true)
-                .bitmapConfig(Bitmap.Config.RGB_565)
-                .build());
-    }
-
-    public void loadImage(String url,final ImageLoadSuccessLisener listener){
-        mImageLoader.loadImage(url, new ImageLoadingListener() {
-            @Override
-            public void onLoadingStarted(String s, View view) {
-
-            }
-
-            @Override
-            public void onLoadingFailed(String s, View view, FailReason failReason) {
-                listener.onFail();
-            }
-
-            @Override
-            public void onLoadingComplete(String s, View view, Bitmap bitmap) {
-                listener.onLoadSuccess(bitmap);
-            }
-
-            @Override
-            public void onLoadingCancelled(String s, View view) {
-                listener.onFail();
-            }
-        });
-    }
-
-    public void loadImage(String url, ImageView imageView) {
-        mImageLoader.displayImage(url, imageView, new DisplayImageOptions.Builder()
-                .cacheInMemory(true)
-                .cacheOnDisk(true)
-                .considerExifParams(true)
-                .bitmapConfig(Bitmap.Config.RGB_565)
-                .build());
     }
 
     public <T,P extends NetRequestParams> void addRequest(final P params, final RequestListner<IApiBase<T>> requestListner, Class<T> tClass, Map<String,String> headers, String cookies) {
