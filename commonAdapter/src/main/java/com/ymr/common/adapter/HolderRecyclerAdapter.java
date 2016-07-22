@@ -19,13 +19,13 @@ public abstract class HolderRecyclerAdapter<Data,GView> extends DataRecyclerAdap
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        IViewHolder<Data, GView> viewHolder = onCreateDataHolder(viewType);
+        IViewHolder<Data, GView> viewHolder = createViewHolder(viewType);
         MyViewHolder recyclerViewHolder = new MyViewHolder(viewHolder);
         recyclerViewHolder.setIViewHolder(viewHolder);
         return recyclerViewHolder;
     }
 
-    protected abstract IViewHolder<Data,GView> onCreateDataHolder(int viewType);
+    protected abstract IViewHolder<Data,GView> createViewHolder(int viewType);
 
     protected View inflate(IViewHolder<Data, GView> viewHolder) {
         GView gView = createView(viewHolder);
