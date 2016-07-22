@@ -40,7 +40,7 @@ public class Env {
         sHeaders = sInit.getHeader();
         sCommonParamsGetter = sInit.getCommonParamsGetter();
         sApiBase = sInit.getApibaseClass();
-        initImageLoader(application);
+        //initImageLoader(application);
     }
 
     private static void initImageLoader(Context context) {
