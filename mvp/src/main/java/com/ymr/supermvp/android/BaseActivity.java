@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 
 /**
  * Created by ymr on 16/3/26.
@@ -92,5 +93,17 @@ public abstract class BaseActivity<P extends IAndroidPresenter> extends AppCompa
     @Override
     public void gotoActivity(Intent intent, int requestCode) {
         startActivityForResult(intent,requestCode);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_BACK:
+                if (!getPresenter().onBackPressed()) {
+                    return super.onKeyDown(keyCode,event);
+                }
+                break;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

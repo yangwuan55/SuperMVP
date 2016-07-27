@@ -5,8 +5,6 @@ import android.databinding.ViewDataBinding;
 import android.view.LayoutInflater;
 
 import com.ymr.supermvp.android.BaseActivity;
-import com.ymr.supermvp.android.databinding.DatabindingPresenter;
-import com.ymr.supermvp.android.databinding.IDatabindingView;
 
 /**
  * Created by ymr on 16/3/26.

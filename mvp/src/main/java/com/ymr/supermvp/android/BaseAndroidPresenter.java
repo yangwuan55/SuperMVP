@@ -74,4 +74,9 @@ public abstract class BaseAndroidPresenter<V extends IAndroidView> extends BaseP
         }
         return null;
     }
+
+    @Override
+    public boolean onBackPressed() {
+        return false;
+    }
 }
