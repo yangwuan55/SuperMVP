@@ -1,5 +1,6 @@
 package com.exitedcode.supermvp.android;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -61,9 +62,9 @@ public abstract class BaseAndroidPresenter<V extends IAndroidView> extends BaseP
 
     }
 
-    public Context getContext() {
+    public Activity getActivity() {
         if (getView() != null) {
-            return getView().getContext();
+            return getView().getActivity();
         }
         return null;
     }

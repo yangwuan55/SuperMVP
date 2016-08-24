@@ -12,7 +12,7 @@ import com.exitedcode.supermvp.common.IView;
 public interface IAndroidView<P extends IAndroidPresenter> extends IView<P> {
     void finishCreatePresenter();
     P createPresenter();
-    Context getContext();
+    Activity getActivity();
     void gotoActivity(Class<? extends Activity> activityClass);
     void gotoActivity(Class<? extends Activity> activityClass,int requestCode);
     void gotoActivity(Intent intent);

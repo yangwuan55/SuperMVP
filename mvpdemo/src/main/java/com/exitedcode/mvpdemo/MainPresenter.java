@@ -79,7 +79,7 @@ public class MainPresenter extends DatabindingPresenter<MainView> {
     }
 
     private void initAdapter() {
-        mDataBindingAdapter = new DataBindingAdapter<Test>(getView().getContext()) {
+        mDataBindingAdapter = new DataBindingAdapter<Test>(getView().getActivity()) {
             @Override
             public IViewHolder<Test, ViewDataBinding> createViewHolder(int viewType) {
                 return new IViewHolder<Test, ViewDataBinding>() {

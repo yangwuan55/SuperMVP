@@ -66,11 +66,6 @@ public abstract class BaseActivity<P extends IAndroidPresenter> extends AppCompa
     }
 
     @Override
-    public Context getContext() {
-        return this;
-    }
-
-    @Override
     public P getPresenter() {
         return mViewDelegate.getPresenter();
     }
@@ -105,5 +100,10 @@ public abstract class BaseActivity<P extends IAndroidPresenter> extends AppCompa
                 break;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public Activity getActivity() {
+        return this;
     }
 }
