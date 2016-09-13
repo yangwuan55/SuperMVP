@@ -20,6 +20,8 @@ public abstract class DataBindingActivity<P extends DatabindingPresenter> extend
         ViewDataBinding viewDataBinding = DataBindingUtil.inflate(LayoutInflater.from(this), getContentLayout(), null, false);
         setContentView(viewDataBinding.getRoot());
         finishCreateDataBinding(viewDataBinding);
-        getPresenter().finishCreateView();
+        if (getPresenter() != null) {
+            getPresenter().finishCreateView();
+        }
     }
 }

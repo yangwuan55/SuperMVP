@@ -25,13 +25,16 @@ public abstract class DataBindingFragment<P extends DatabindingPresenter> extend
     protected View onCreateChildView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (mViewDataBinding == null) {
             mViewDataBinding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), getContentLayout(), null, false);
+            finishCreateDataBinding(mViewDataBinding);
+            if (getPresenter() != null) {
+                getPresenter().finishCreateView();
+            }
+        } else {
+            ViewGroup parent = (ViewGroup) mViewDataBinding.getRoot().getParent();
+            if (parent != null) {
+                parent.removeView(mViewDataBinding.getRoot());
+            }
         }
-        ViewGroup parent = (ViewGroup) mViewDataBinding.getRoot().getParent();
-        if (parent != null) {
-            parent.removeView(mViewDataBinding.getRoot());
-        }
-        finishCreateDataBinding(mViewDataBinding);
-        getPresenter().finishCreateView();
         return mViewDataBinding.getRoot();
     }
 }
