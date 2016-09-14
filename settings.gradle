@@ -1,1 +1,1 @@
-include ':mvp', ':mvpdemo'/*, ':commonAdapter'*/, ':supernetwork'
+include ':library', ':mvpdemo'/*, ':commonAdapter'*/, ':supernetwork'
