@@ -34,7 +34,8 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(path: ':library')
+    //compile project(path: ':library')
+    compile 'com.exitedcode.supermvp:library:0.1'
     compile project(path: ':supernetwork')
     compile 'com.exitedcode.superadapter:library:1.1'
     compile 'com.mcxiaoke.volley:library:1.0.19'
