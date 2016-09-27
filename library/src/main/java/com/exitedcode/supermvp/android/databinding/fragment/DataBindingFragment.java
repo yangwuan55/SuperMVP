@@ -1,4 +1,4 @@
-package com.exitedcode.supermvp.android.databinding;
+package com.exitedcode.supermvp.android.databinding.fragment;
 
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
@@ -8,11 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.exitedcode.supermvp.android.BaseFragment;
+import com.exitedcode.supermvp.android.databinding.IDatabindingFragmentView;
 
 /**
  * Created by ymr on 16/3/26.
  */
-public abstract class DataBindingFragment<P extends DatabindingPresenter> extends BaseFragment<P> implements IDatabindingView<P>{
+public abstract class DataBindingFragment<P extends DatabindingFragmentPresenter> extends BaseFragment<P> implements IDatabindingFragmentView<P> {
 
     private ViewDataBinding mViewDataBinding;
 

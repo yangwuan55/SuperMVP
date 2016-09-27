@@ -7,7 +7,7 @@ import com.exitedcode.supermvp.android.IAndroidView;
 /**
  * Created by ymr on 16/3/26.
  */
-public interface IDatabindingView<P extends DatabindingPresenter> extends IAndroidView<P> {
+interface IDatabindingView {
 
     void finishCreateDataBinding(ViewDataBinding viewDataBinding);
 

@@ -5,7 +5,7 @@ import android.databinding.ViewDataBinding;
 import android.view.View;
 
 import com.exitedcode.mvpdemo.databinding.ActivityMainBinding;
-import com.exitedcode.supermvp.android.databinding.DataBindingActivity;
+import com.exitedcode.supermvp.android.databinding.activity.DataBindingActivity;
 
 public class MainActivity extends DataBindingActivity<MainPresenter> implements MainView {
 

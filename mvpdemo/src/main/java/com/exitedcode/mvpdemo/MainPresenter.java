@@ -8,14 +8,14 @@ import android.widget.ListAdapter;
 import com.exitedcode.superadapter.base.IViewHolder;
 import com.exitedcode.superadapter.databinding.DataBindingAdapter;
 import com.exitedcode.mvpdemo.databinding.LayoutListItemBinding;
-import com.exitedcode.supermvp.android.databinding.DatabindingPresenter;
+import com.exitedcode.supermvp.android.databinding.activity.DatabindingActivityPresenter;
 
 import java.util.ArrayList;
 
 /**
  * Created by ymr on 16/3/26.
  */
-public class MainPresenter extends DatabindingPresenter<MainView> {
+public class MainPresenter extends DatabindingActivityPresenter<MainView> {
 
     private DataBindingAdapter<Test> mDataBindingAdapter;
 

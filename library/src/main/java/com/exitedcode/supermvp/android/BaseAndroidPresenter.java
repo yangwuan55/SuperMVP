@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 
 import com.exitedcode.supermvp.common.BasePresenter;
@@ -12,6 +14,22 @@ import com.exitedcode.supermvp.common.BasePresenter;
  * Created by ymr on 16/3/26.
  */
 public abstract class BaseAndroidPresenter<V extends IAndroidView> extends BasePresenter<V> implements IAndroidPresenter<V> {
+
+    private Handler mHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            onMessge(msg);
+        }
+    };
+
+    public Handler getHandler() {
+        return mHandler;
+    }
+
+    protected void onMessge(Message msg) {
+
+    }
 
     public BaseAndroidPresenter(V view) {
         attachView(view);
@@ -30,6 +48,7 @@ public abstract class BaseAndroidPresenter<V extends IAndroidView> extends BaseP
     @Override
     public void onDestroy() {
         detachView(true);
+        mHandler.removeCallbacksAndMessages(null);
     }
 
     @Override
@@ -74,10 +93,5 @@ public abstract class BaseAndroidPresenter<V extends IAndroidView> extends BaseP
             return getView().getIntent();
         }
         return null;
-    }
-
-    @Override
-    public boolean onBackPressed() {
-        return false;
     }
 }

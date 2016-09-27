@@ -1,11 +1,11 @@
 package com.exitedcode.mvpdemo;
 
-import com.exitedcode.supermvp.android.databinding.IDatabindingView;
+import com.exitedcode.supermvp.android.databinding.IDatabindingActivityView;
 
 /**
  * Created by ymr on 16/3/26.
  */
-public interface MainView extends IDatabindingView<MainPresenter> {
+public interface MainView extends IDatabindingActivityView<MainPresenter> {
     boolean isHelloShowing();
 
     void hideHello();

@@ -1,7 +1,6 @@
 package com.exitedcode.supermvp.android;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,7 +10,7 @@ import android.view.KeyEvent;
 /**
  * Created by ymr on 16/3/26.
  */
-public abstract class BaseActivity<P extends IAndroidPresenter> extends AppCompatActivity implements IAndroidView<P> {
+public abstract class BaseActivity<P extends ActivityPresenter> extends AppCompatActivity implements IActivityView<P> {
 
     private boolean mIsVisible;
     private final ViewDelegate<P> mViewDelegate = new ViewDelegate<>(this);
@@ -92,14 +91,11 @@ public abstract class BaseActivity<P extends IAndroidPresenter> extends AppCompa
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        switch (keyCode) {
-            case KeyEvent.KEYCODE_BACK:
-                if (!getPresenter().onBackPressed()) {
-                    return super.onKeyDown(keyCode,event);
-                }
-                break;
+        if (keyCode == KeyEvent.KEYCODE_BACK && getPresenter().onBackPress()) {
+            return false;
+        } else {
+            return super.onKeyDown(keyCode, event);
         }
-        return super.onKeyDown(keyCode, event);
     }
 
     @Override
