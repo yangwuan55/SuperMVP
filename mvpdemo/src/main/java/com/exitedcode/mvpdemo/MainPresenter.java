@@ -1,6 +1,7 @@
 package com.exitedcode.mvpdemo;
 
 import android.databinding.ViewDataBinding;
+import android.os.Build;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.widget.ListAdapter;
@@ -23,6 +24,11 @@ public class MainPresenter extends DatabindingActivityPresenter<MainView> {
 
     public MainPresenter(MainView view) {
         super(view);
+    }
+
+    @Override
+    protected boolean isDebug() {
+        return BuildConfig.DEBUG;
     }
 
     @Override

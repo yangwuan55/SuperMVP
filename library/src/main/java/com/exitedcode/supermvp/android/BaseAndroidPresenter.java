@@ -47,9 +47,11 @@ public abstract class BaseAndroidPresenter<V extends IAndroidView> extends BaseP
 
     @Override
     public void onDestroy() {
-        detachView(true);
+        detachView(isDebug());
         mHandler.removeCallbacksAndMessages(null);
     }
+
+    protected abstract boolean isDebug();
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

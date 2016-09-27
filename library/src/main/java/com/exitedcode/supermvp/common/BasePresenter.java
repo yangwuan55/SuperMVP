@@ -38,9 +38,9 @@ public abstract class BasePresenter<V extends IView> implements IPresenter<V> {
     }
 
     @Override
-    public void detachView(boolean retainInstance) {
+    public void detachView(boolean dislodgeInstance) {
         onDetachView();
-        if (viewRef != null) {
+        if (dislodgeInstance && viewRef != null) {
             viewRef.clear();
             viewRef = null;
         }
