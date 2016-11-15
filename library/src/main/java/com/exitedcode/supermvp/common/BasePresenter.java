@@ -23,6 +23,7 @@ public abstract class BasePresenter<V extends IView> implements IPresenter<V> {
      *
      * @return <code>null</code>, if view is not attached, otherwise the concrete view instance
      */
+    @Override
     @Nullable
     public V getView() {
         return viewRef == null ? null : viewRef.get();

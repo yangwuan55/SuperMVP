@@ -83,6 +83,11 @@ public abstract class BaseAndroidPresenter<V extends IAndroidView> extends BaseP
 
     }
 
+    @Override
+    public boolean isViewAttached() {
+        return super.isViewAttached() && getActivity() != null;
+    }
+
     public Activity getActivity() {
         if (getView() != null) {
             return getView().getActivity();
