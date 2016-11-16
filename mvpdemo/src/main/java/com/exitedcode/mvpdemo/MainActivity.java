@@ -2,6 +2,7 @@ package com.exitedcode.mvpdemo;
 
 import android.app.ProgressDialog;
 import android.databinding.ViewDataBinding;
+import android.os.Bundle;
 import android.view.View;
 
 import com.exitedcode.mvpdemo.databinding.ActivityMainBinding;
@@ -13,7 +14,7 @@ public class MainActivity extends DataBindingActivity<MainPresenter> implements 
     private ProgressDialog mProgressDialog;
 
     @Override
-    public void finishCreateDataBinding(ViewDataBinding viewDataBinding) {
+    public void finishCreateDataBinding(ViewDataBinding viewDataBinding, Bundle savedInstanceState) {
         mProgressDialog = new ProgressDialog(this);
         mViewDataBinding = ((ActivityMainBinding) viewDataBinding);
         mViewDataBinding.list.setAdapter(getPresenter().getAdapter());

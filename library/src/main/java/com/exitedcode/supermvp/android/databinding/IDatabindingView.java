@@ -1,6 +1,7 @@
 package com.exitedcode.supermvp.android.databinding;
 
 import android.databinding.ViewDataBinding;
+import android.os.Bundle;
 
 import com.exitedcode.supermvp.android.IAndroidView;
 
@@ -9,7 +10,7 @@ import com.exitedcode.supermvp.android.IAndroidView;
  */
 interface IDatabindingView {
 
-    void finishCreateDataBinding(ViewDataBinding viewDataBinding);
+    void finishCreateDataBinding(ViewDataBinding viewDataBinding, Bundle savedInstanceState);
 
     int getContentLayout();
 }

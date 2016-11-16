@@ -2,6 +2,7 @@ package com.exitedcode.supermvp.android.databinding.activity;
 
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 
 import com.exitedcode.supermvp.android.BaseActivity;
@@ -13,14 +14,14 @@ import com.exitedcode.supermvp.android.databinding.IDatabindingActivityView;
 public abstract class DataBindingActivity<P extends DatabindingActivityPresenter> extends BaseActivity<P> implements IDatabindingActivityView<P> {
 
     @Override
-    public void finishCreatePresenter() {
-        initDataBinding();
+    public void finishCreatePresenter(Bundle savedInstanceState) {
+        initDataBinding(savedInstanceState);
     }
 
-    private void initDataBinding() {
+    private void initDataBinding(Bundle savedInstanceState) {
         ViewDataBinding viewDataBinding = DataBindingUtil.inflate(LayoutInflater.from(this), getContentLayout(), null, false);
         setContentView(viewDataBinding.getRoot());
-        finishCreateDataBinding(viewDataBinding);
+        finishCreateDataBinding(viewDataBinding,savedInstanceState);
         if (getPresenter() != null) {
             getPresenter().finishCreateView();
         }

@@ -15,7 +15,7 @@ public class ViewDelegate<P extends IAndroidPresenter> implements IViewDelegate 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         mPresenter = mAndroidView.createPresenter();
-        mAndroidView.finishCreatePresenter();
+        mAndroidView.finishCreatePresenter(savedInstanceState);
         if (mPresenter != null) {
             mPresenter.onCreate(savedInstanceState);
         }

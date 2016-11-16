@@ -18,7 +18,7 @@ public abstract class DataBindingFragment<P extends DatabindingFragmentPresenter
     private ViewDataBinding mViewDataBinding;
 
     @Override
-    public void finishCreatePresenter() {
+    public void finishCreatePresenter(Bundle savedInstanceState) {
 
     }
 
@@ -26,7 +26,7 @@ public abstract class DataBindingFragment<P extends DatabindingFragmentPresenter
     protected View onCreateChildView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (mViewDataBinding == null) {
             mViewDataBinding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), getContentLayout(), null, false);
-            finishCreateDataBinding(mViewDataBinding);
+            finishCreateDataBinding(mViewDataBinding, savedInstanceState);
             if (getPresenter() != null) {
                 getPresenter().finishCreateView();
             }
