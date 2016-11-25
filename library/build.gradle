@@ -3,7 +3,7 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
 // 根节点添加
-version = "0.2.4"
+version = "0.2.5"
 // 根节点添加
 def siteUrl = 'https://github.com/yangwuan55/SuperMVP'    // project homepage
 def gitUrl = 'https://github.com/yangwuan55/SuperMVP.git' // project git

@@ -6,6 +6,7 @@ import java.lang.ref.WeakReference;
 
 public abstract class BasePresenter<V extends IView> implements IPresenter<V> {
     public WeakReference<V> viewRef;
+    private boolean isDetached = false;
 
     public BasePresenter() {
     }
@@ -14,6 +15,7 @@ public abstract class BasePresenter<V extends IView> implements IPresenter<V> {
     public void attachView(V view) {
         viewRef = new WeakReference<V>(view);
         onAttachView();
+        isDetached = false;
     }
 
     /**
@@ -35,12 +37,13 @@ public abstract class BasePresenter<V extends IView> implements IPresenter<V> {
      */
     @Override
     public boolean isViewAttached() {
-        return viewRef != null && viewRef.get() != null;
+        return viewRef != null && viewRef.get() != null && !isDetached;
     }
 
     @Override
     public void detachView(boolean dislodgeInstance) {
         onDetachView();
+        isDetached = true;
         if (dislodgeInstance && viewRef != null) {
             viewRef.clear();
             viewRef = null;
