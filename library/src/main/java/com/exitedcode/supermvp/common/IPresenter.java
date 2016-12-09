@@ -5,7 +5,9 @@ import android.support.annotation.Nullable;
 /**
  * Created by ymr on 16/3/26.
  */
-public interface IPresenter<V extends IView> {
+public interface IPresenter<V extends IView,M extends IModel> {
+
+    M createModel();
 
     void attachView(V view);
 

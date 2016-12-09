@@ -1,26 +1,26 @@
 package com.exitedcode.mvpdemo;
 
 import android.databinding.ViewDataBinding;
-import android.os.Build;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.widget.ListAdapter;
 
+import com.exitedcode.mvpdemo.model.HomeModel;
+import com.exitedcode.mvpdemo.model.IHomeModel;
 import com.exitedcode.superadapter.base.IViewHolder;
 import com.exitedcode.superadapter.databinding.DataBindingAdapter;
 import com.exitedcode.mvpdemo.databinding.LayoutListItemBinding;
 import com.exitedcode.supermvp.android.databinding.activity.DatabindingActivityPresenter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ymr on 16/3/26.
  */
-public class MainPresenter extends DatabindingActivityPresenter<MainView> {
+public class MainPresenter extends DatabindingActivityPresenter<MainView,IHomeModel> {
 
     private DataBindingAdapter<Test> mDataBindingAdapter;
-
-    private Handler mHandler = new Handler();
 
     public MainPresenter(MainView view) {
         super(view);
@@ -34,30 +34,13 @@ public class MainPresenter extends DatabindingActivityPresenter<MainView> {
     @Override
     public void finishCreateView() {
         getView().showLoading();
-        mHandler.postDelayed(new Runnable() {
+        getModel().loadDatas(new IHomeModel.LoadDataListener() {
             @Override
-            public void run() {
-                ArrayList<Test> datas = createSomeDatas();
-                mDataBindingAdapter.setDatas(datas);
+            public void onRecive(List<Test> tests) {
+                mDataBindingAdapter.setDatas(tests);
                 getView().hideLoading();
             }
-        },3000);
-    }
-
-    @NonNull
-    private ArrayList<Test> createSomeDatas() {
-        ArrayList<Test> datas = new ArrayList<>();
-        datas.add(new Test("aaaa"));
-        datas.add(new Test("aaaa"));
-        datas.add(new Test("aaaa"));
-        datas.add(new Test("aaaa"));
-        datas.add(new Test("aaaa"));
-        datas.add(new Test("aaaa"));
-        datas.add(new Test("aaaa"));
-        datas.add(new Test("aaaa"));
-        datas.add(new Test("aaaa"));
-        datas.add(new Test("aaaa"));
-        return datas;
+        });
     }
 
     private void updateView() {
@@ -106,5 +89,10 @@ public class MainPresenter extends DatabindingActivityPresenter<MainView> {
                 };
             }
         };
+    }
+
+    @Override
+    public IHomeModel createModel() {
+        return new HomeModel();
     }
 }

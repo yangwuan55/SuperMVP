@@ -9,11 +9,12 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 
 import com.exitedcode.supermvp.common.BasePresenter;
+import com.exitedcode.supermvp.common.IModel;
 
 /**
  * Created by ymr on 16/3/26.
  */
-public abstract class BaseAndroidPresenter<V extends IAndroidView> extends BasePresenter<V> implements IAndroidPresenter<V> {
+public abstract class BaseAndroidPresenter<V extends IAndroidView,M extends IModel> extends BasePresenter<V,M> implements IAndroidPresenter<V,M> {
 
     private Handler mHandler = new Handler(){
         @Override

@@ -4,11 +4,13 @@ import android.support.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
 
-public abstract class BasePresenter<V extends IView> implements IPresenter<V> {
+public abstract class BasePresenter<V extends IView,M extends IModel> implements IPresenter<V,M> {
+    private final M mModel;
     public WeakReference<V> viewRef;
     private boolean isDetached = false;
 
     public BasePresenter() {
+        mModel = createModel();
     }
 
     @Override
@@ -48,6 +50,10 @@ public abstract class BasePresenter<V extends IView> implements IPresenter<V> {
             viewRef.clear();
             viewRef = null;
         }
+    }
+
+    protected M getModel() {
+        return mModel;
     }
 
     protected abstract void onAttachView();
