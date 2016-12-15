@@ -24,6 +24,7 @@ public abstract class BaseAndroidPresenter<V extends IAndroidView,M extends IMod
         }
     };
 
+    @Override
     public Handler getHandler() {
         return mHandler;
     }
@@ -50,6 +51,7 @@ public abstract class BaseAndroidPresenter<V extends IAndroidView,M extends IMod
     public void onDestroy() {
         detachView(isDebug());
         mHandler.removeCallbacksAndMessages(null);
+        mHandler = null;
     }
 
     protected abstract boolean isDebug();
