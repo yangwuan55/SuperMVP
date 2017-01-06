@@ -15,15 +15,11 @@ import android.view.ViewGroup;
 public abstract class BaseFragment<P extends IAndroidPresenter> extends Fragment implements IAndroidView<P> {
 
     private final ViewDelegate<P> mViewDelegate = new ViewDelegate<>(this);
-    private boolean mViewCreated;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if (!mViewCreated) {
-            mViewCreated = true;
-            mViewDelegate.onCreate(savedInstanceState);
-        }
+        mViewDelegate.onCreate(savedInstanceState);
         return onCreateChildView(inflater, container, savedInstanceState);
     }
 
