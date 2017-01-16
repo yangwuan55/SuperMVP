@@ -27,14 +27,14 @@ public abstract class DataBindingFragment<P extends DatabindingFragmentPresenter
         if (mViewDataBinding == null) {
             mViewDataBinding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), getContentLayout(), null, false);
             finishCreateDataBinding(mViewDataBinding, savedInstanceState);
-            if (getPresenter() != null) {
-                getPresenter().finishCreateView();
-            }
         } else {
             ViewGroup parent = (ViewGroup) mViewDataBinding.getRoot().getParent();
             if (parent != null) {
                 parent.removeView(mViewDataBinding.getRoot());
             }
+        }
+        if (getPresenter() != null) {
+            getPresenter().finishCreateView();
         }
         return mViewDataBinding.getRoot();
     }
