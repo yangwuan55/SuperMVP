@@ -32,10 +32,13 @@ public abstract class DataBindingFragment<P extends DatabindingFragmentPresenter
             if (parent != null) {
                 parent.removeView(mViewDataBinding.getRoot());
             }
+            onFragmentRestore();
         }
         if (getPresenter() != null) {
             getPresenter().finishCreateView();
         }
         return mViewDataBinding.getRoot();
     }
+
+    protected abstract void onFragmentRestore();
 }

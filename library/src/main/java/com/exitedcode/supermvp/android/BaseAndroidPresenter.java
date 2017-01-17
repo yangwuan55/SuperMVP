@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import com.exitedcode.supermvp.common.BasePresenter;
 import com.exitedcode.supermvp.common.IModel;
@@ -16,6 +17,7 @@ import com.exitedcode.supermvp.common.IModel;
  */
 public abstract class BaseAndroidPresenter<V extends IAndroidView,M extends IModel> extends BasePresenter<V,M> implements IAndroidPresenter<V,M> {
 
+    private static final String TAG = "BaseAndroidPresenter";
     private Handler mHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -34,6 +36,7 @@ public abstract class BaseAndroidPresenter<V extends IAndroidView,M extends IMod
     }
 
     public BaseAndroidPresenter(V view) {
+        Log.i(TAG,"view = " + view + " presenter = " + this);
         attachView(view);
     }
 

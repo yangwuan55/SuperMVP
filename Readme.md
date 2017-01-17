@@ -3,5 +3,5 @@
 
 ## gradle
 ~~~
-compile 'com.exitedcode.supermvp:library:0.3.3'
+compile 'com.exitedcode.supermvp:library:0.3.4'
 ~~~
