@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.1"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
 
     defaultConfig {
         applicationId "com.ymr.mvpdemo"
@@ -37,8 +37,8 @@ dependencies {
     compile project(path: ':library')
     //compile 'com.exitedcode.supermvp:library:0.1'
     compile project(path: ':supernetwork')
-    compile 'com.android.support:support-v4:24.2.1'
-    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.android.support:support-v4:25.2.0'
+    compile 'com.android.support:appcompat-v7:25.2.0'
     compile 'com.exitedcode.superadapter:library:1.1'
     compile 'com.mcxiaoke.volley:library:1.0.19'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'

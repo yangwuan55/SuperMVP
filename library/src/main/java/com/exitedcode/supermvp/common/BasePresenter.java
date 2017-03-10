@@ -5,19 +5,16 @@ import android.support.annotation.Nullable;
 import java.lang.ref.WeakReference;
 
 public abstract class BasePresenter<V extends IView,M extends IModel> implements IPresenter<V,M> {
-    private final M mModel;
-    public WeakReference<V> viewRef;
+    private M mModel;
+    private WeakReference<V> viewRef;
     private boolean isDetached = false;
-
-    public BasePresenter() {
-        mModel = createModel();
-    }
 
     @Override
     public void attachView(V view) {
-        viewRef = new WeakReference<V>(view);
+        viewRef = new WeakReference<>(view);
         onAttachView();
         isDetached = false;
+        mModel = createModel();
     }
 
     /**
