@@ -3,7 +3,7 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
 // 根节点添加
-version = "0.3.5"
+version = "0.3.6"
 // 根节点添加
 def siteUrl = 'https://github.com/yangwuan55/SuperMVP'    // project homepage
 def gitUrl = 'https://github.com/yangwuan55/SuperMVP.git' // project git
@@ -12,8 +12,7 @@ def gitUrl = 'https://github.com/yangwuan55/SuperMVP.git' // project git
 group = "com.exitedcode.supermvp"
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 28
 
     defaultConfig {
         minSdkVersion 14
@@ -45,10 +44,10 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    provided 'com.android.support:appcompat-v7:25.2.0'
-    configurations.all {
+    provided 'com.android.support:appcompat-v7:28.0.0'
+    /*configurations.all {
         resolutionStrategy.force 'com.android.support:support-v4:25.2.0'
-    }
+    }*/
 }
 
 install {
